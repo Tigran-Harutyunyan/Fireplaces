@@ -1,0 +1,57 @@
+<header id="appHeader" class="header">
+    <nav class="nav-bar">
+        <div class="container nav-container nav-container">
+            <div class="logo"></div>
+            <ul class="nav sidemenu" id="top-nav">
+                <li>
+                    <a class="menu-item" routerLink="/products"  (click)="closeMenu()">Products </a>
+                </li>
+                <li>
+                    <a class="menu-item" href="#services" rel="m_PageScroll2id">Services</a>
+                </li>
+                <li>
+                    <a class="menu-item" href="#gallery" rel="m_PageScroll2id">Gallery</a>
+                </li>
+                <li>
+                    <a class="menu-item" href="#about" rel="m_PageScroll2id">About us</a>
+                </li>
+                <li>
+                    <a class="menu-item" href="#contacts" rel="m_PageScroll2id">Contact Us</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!--MOBILE DROPDOWN-->
+    <div class="button_container" id="toggleMobileMEnu" [class.active]="isMenuVisible" (click)="toggleMenu()" >
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div class="overlay" id="overlay" *ngIf="isMenuVisible" [class.open]="isMenuVisible" >
+        <nav class="overlay-menu">
+            <ul>
+                <li>
+                    <a class="menu-item" routerLink="/products"  (click)="toggleMenu()">Product</a>
+                </li>
+                <li>
+                    <a class="menu-item" href="" rel="m_PageScroll2id"  (click)="toggleMenu()">Services</a>
+                </li>
+                <li>
+                    <a class="menu-item" href="" rel="m_PageScroll2id"  (click)="toggleMenu()">Gallery</a>
+                </li>
+                <li>
+                    <a class="menu-item" href="" rel="m_PageScroll2id"  (click)="toggleMenu()">About Us</a>
+                </li>
+                <li>
+                    <a class="menu-item" href="" rel="m_PageScroll2id"  (click)="toggleMenu()">Contact Us</a>
+                </li>
+            </ul>
+            <div class="social-icons ">
+                <a href="https://www.facebook.com/Core-Fireplace-Grills-256417668217459/?modal=admin_todo_tour" target="_blank" class="fb-link"></a>
+                <a href="https://www.instagram.com/corefireplace/" target="_blank" class="tw-link"></a>
+                <a href="https://www.yelp.com/biz/core-fireplace-and-grills-san-fernando?osq=corefireplaces" target="_blank" class="in-link"></a>
+            </div>
+        </nav>
+    </div>
+    <!--MOBILE DROPDOWN-->
+</header>

@@ -1,0 +1,68 @@
+<body data-id="home">
+    <header id="appHeader" class="header">
+        <nav class="nav-bar">
+            <div class="container nav-container nav-container">
+                <div class="logo"></div>
+                <ul class="nav sidemenu" id="top-nav">
+                    <li>
+                        <a class="menu-item" href="#productsPAGE" rel="m_PageScroll2id">Products </a>
+                    </li>
+                    <li>
+                        <a class="menu-item" href="#services" rel="m_PageScroll2id">Services</a>
+                    </li>
+                    <li>
+                        <a class="menu-item" href="#gallery" rel="m_PageScroll2id">Gallery</a>
+                    </li>
+                    <li>
+                        <a class="menu-item" href="#about" rel="m_PageScroll2id">About us</a>
+                    </li>
+                    <li>
+                        <a class="menu-item" href="#contacts" rel="m_PageScroll2id">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!--MOBILE DROPDOWN-->
+        <div class="button_container" id="toggleMobileMEnu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="overlay" id="overlay">
+            <nav class="overlay-menu">
+                <ul>
+                    <li>
+                        <a class="menu-item" href="#productsPAGE" rel="m_PageScroll2id">Product</a>
+                    </li>
+                    <li>
+                        <a class="menu-item" href="#services" rel="m_PageScroll2id">Services</a>
+                    </li>
+                    <li>
+                        <a class="menu-item" href="#gallery" rel="m_PageScroll2id">Gallery</a>
+                    </li>
+                    <li>
+                        <a class="menu-item" href="#about" rel="m_PageScroll2id">About Us</a>
+                    </li>
+                    <li>
+                        <a class="menu-item" href="#contacts" rel="m_PageScroll2id">Contact Us</a>
+                    </li>
+                </ul>
+                <div class="social-icons ">
+                    <a href="https://www.facebook.com/Core-Fireplace-Grills-256417668217459/?modal=admin_todo_tour" target="_blank" class="fb-link"></a>
+                    <a href="https://www.instagram.com/corefireplace/" target="_blank" class="tw-link"></a>
+                    <a href="https://www.yelp.com/biz/core-fireplace-and-grills-san-fernando?osq=corefireplaces" target="_blank" class="in-link"></a>
+                </div>
+            </nav>
+        </div>
+        <!--MOBILE DROPDOWN-->
+    </header>
+
+    <router-outlet class="uiview-full-width"></router-outlet>
+
+    <div class="backdrop"></div>
+    <script src="js/src/libs.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBsH9fjM0MpSFE75VOKrHaQTfVHkPD0bwY&callback=initMap&libraries=places" async defer></script>
+    <script src="js/src/scripts.js"></script>
+</body>
+                    
+ 
