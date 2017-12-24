@@ -1,11 +1,18 @@
 import {Component, OnInit,  AfterViewInit} from '@angular/core';
+import { customerApiService } from "../../shared/httpRequests.service"; 
 declare var jquery : any;
 declare var $ : any;
 
 @Component({templateUrl: './Home.component.html'})
 
 export class HomeComponent implements AfterViewInit {
-  constructor() {}
+  constructor(  private customerApi: customerApiService ) { }
+  public showApp: boolean = false;
+  private allInfo = {};
+  ngOnInit(){
+    this.allInfo = this.customerApi.getAllInfo();
+    console.log(this.allInfo)
+  }
 
   ngAfterViewInit() {
     $("#slider1").owlCarousel({

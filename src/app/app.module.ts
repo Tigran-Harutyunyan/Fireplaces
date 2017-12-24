@@ -14,7 +14,7 @@ import {
   ProductDetailsComponent,
   ContactsComponent,
   HeaderComponent ,
-  HttpRequestService,
+  customerApiService,
   ErrorHandlerService 
 } from './index'
 @NgModule({
@@ -39,7 +39,7 @@ import {
       apiKey: 'AIzaSyBsH9fjM0MpSFE75VOKrHaQTfVHkPD0bwY'
     })
   ],
-  providers: [HttpRequestService,ErrorHandlerService ],
+  providers: [customerApiService,ErrorHandlerService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
