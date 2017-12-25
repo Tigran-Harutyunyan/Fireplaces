@@ -1,13 +1,7 @@
-<div>
+<div class="galleries-section">
     <h2 class="section-title">Gallery</h2>
-    <ul class="product-item-container filtered-results" >
-        <li *ngFor="let item of gallery">
-            <div class="shirma"></div>
-            <div class="product-hover-section">
-                <h4 class="product-title pr-title1">{{ item.name}}</h4>
-                <a class="btn fixed-btn">VIEW MORE</a>
-            </div>
-            <h4 class="product-title pr-title2">{{ item.name}}</h4>
+    <ul class="product-item-container filtered-results galleries-items" >
+        <li *ngFor="let item of allInfo.gallery"> 
             <img class="ticket-img" src="{{ item.imgUrl}}" alt="{{ item.name}}">
         </li> 
     </ul>

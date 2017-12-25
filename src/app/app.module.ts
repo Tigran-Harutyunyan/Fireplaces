@@ -15,7 +15,8 @@ import {
   ContactsComponent,
   HeaderComponent ,
   customerApiService,
-  ErrorHandlerService 
+  ErrorHandlerService, 
+  GalleryComponent
 } from './index'
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {
     ProductsComponent,
     ProductDetailsComponent,
     ContactsComponent,
-    HeaderComponent 
+    HeaderComponent,
+    GalleryComponent 
   ],
   imports: [
     BrowserModule,

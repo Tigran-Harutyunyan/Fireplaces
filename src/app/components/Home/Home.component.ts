@@ -8,7 +8,7 @@ declare var $ : any;
 export class HomeComponent implements AfterViewInit {
   constructor(  private customerApi: customerApiService ) { }
   public showApp: boolean = false;
-  private allInfo = {};
+  public allInfo : {};
   ngOnInit(){
     this.allInfo = this.customerApi.getAllInfo();
     console.log(this.allInfo)

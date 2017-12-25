@@ -3,7 +3,7 @@ import { Headers, Http, RequestOptions } from '@angular/http'
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Rx'
  
-import { ToastrService } from 'ngx-toastr';
+ 
 
 @Injectable()
 

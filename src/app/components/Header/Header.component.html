@@ -1,16 +1,16 @@
 <header id="appHeader" class="header">
     <nav class="nav-bar">
         <div class="container nav-container nav-container">
-            <div class="logo"></div>
+           <a href="/#/"><div class="logo"></div></a> 
             <ul class="nav sidemenu" id="top-nav">
                 <li>
-                    <a class="menu-item" routerLink="/products"  (click)="closeMenu()">Products </a>
+                    <a class="menu-item" routerLink="/products" routerLinkActive="active-menu" (click)="closeMenu()">Products </a>
                 </li>
                 <li>
                     <a class="menu-item" href="#services" rel="m_PageScroll2id">Services</a>
                 </li>
                 <li>
-                    <a class="menu-item" href="#gallery" rel="m_PageScroll2id">Gallery</a>
+                    <a class="menu-item"  routerLink="/gallery" routerLinkActive="active-menu">Gallery</a>
                 </li>
                 <li>
                     <a class="menu-item" href="#about" rel="m_PageScroll2id">About us</a>
@@ -37,7 +37,7 @@
                     <a class="menu-item" href="" rel="m_PageScroll2id"  (click)="toggleMenu()">Services</a>
                 </li>
                 <li>
-                    <a class="menu-item" href="" rel="m_PageScroll2id"  (click)="toggleMenu()">Gallery</a>
+                    <a class="menu-item"  routerLink="/gallery" routerLinkActive="active-menu" (click)="toggleMenu()">Gallery</a>
                 </li>
                 <li>
                     <a class="menu-item" href="" rel="m_PageScroll2id"  (click)="toggleMenu()">About Us</a>

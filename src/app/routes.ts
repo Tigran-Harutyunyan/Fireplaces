@@ -4,7 +4,8 @@ import {
     HomeComponent,
     DashboardComponent,
     ProductsComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    GalleryComponent
 } from './index'
 
 export const appRoutes : Routes = [
@@ -20,6 +21,10 @@ export const appRoutes : Routes = [
     {
         path: 'product-details',
         component: ProductDetailsComponent 
+    },
+    {
+        path: 'gallery',
+        component: GalleryComponent 
     }
     /* , {
         path: '404',

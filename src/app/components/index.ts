@@ -4,3 +4,4 @@ export * from './Products/Products.component'
 export * from './ProductDetails/ProductDetails.component'  
 export * from './Contacts/Contacts.component';
 export * from './Header/Header.component';
+export * from './Gallery/Gallerycomponent';
