@@ -30,4 +30,4 @@ ng serve --port 4201
 ng serve build --target=production
 ng build --target=production
 ng build --watch -o dist 
-ng build --env=prod       !!! most used
+ng build --env=prod       !!! most used2
