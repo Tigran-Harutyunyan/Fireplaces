@@ -18,7 +18,9 @@ export class AppComponent implements OnInit {
           this.showApp = true;
         }
 
-      }, (err) => { })
+      }, (err) => {
+         
+       })
   }
   title = 'app works!';
 }

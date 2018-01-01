@@ -5,15 +5,14 @@ import {Observable} from 'rxjs/Rx'
 //import {ToastrService} from 'ngx-toastr';
 import {ErrorHandlerService} from './error-handler.service'
 import {forEach} from '@angular/router/src/utils/collection';
+import {IServerData} from "../shared/allData.model";
 import {debug} from 'util';
 @Injectable()
 
 export class customerApiService {
-    constructor(private http : Http, private router : Router, private errHandler : ErrorHandlerService) {}
-
-    apiPath = "http://api.corefireplace.com";
-
-    allData = {};
+    constructor(private http : Http, private router : Router, private errHandler : ErrorHandlerService) {} 
+    apiPath = "http://api.corefireplace.com"; 
+    allData : IServerData;
     options = new RequestOptions({
         headers: new Headers({
             'Accept': 'application/x-www-form-urlencoded; charset=UTF-8'
@@ -96,14 +95,15 @@ export class customerApiService {
     };
     // ======= GENERIC POST REQUEST ====================
 
-    postRequest(params : string, data : Object) : Observable < any > {
-        var queryString = `${params}`;
+    sendMail(formData : Object) : Observable < any > {
+        var url = `${this.apiPath}/api/sendEmail`;
         let headers = new Headers();
         headers.append('Accept', 'application/json');
         let options = new RequestOptions({headers: headers});
+         
         return this
             .http
-            .post(queryString, data, options)
+            .post(url, JSON.stringify(formData), options)
             .map((response) => {
                 if (response.json().error) {
                     this.handleError(response.json());

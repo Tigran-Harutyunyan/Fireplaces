@@ -19,11 +19,11 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css"
+        "styles.scss"
       ],
       "scripts": [
         "./assets/js/vendor/jquery.js",
-        "./assets/js/vendor/owl.carousel.min.js"  
+        "./assets/js/vendor/owl.carousel.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
@@ -54,7 +54,8 @@
     }
   },
   "defaults": {
-    "styleExt": "css",
-    "component": {}
+    "styleExt": "scss",
+    "component": {
+    }
   }
 }

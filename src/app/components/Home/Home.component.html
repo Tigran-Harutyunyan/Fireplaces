@@ -1,20 +1,20 @@
-<div class="carcass">
+<div class="carcass"> 
+    <!-- SLIDER-->
     <div class="slider-container home-slider">
-        <div class="slider-inner"  *ngIf="allInfo.slider && allInfo.slider.length"> 
+        <div class="slider-inner"  *ngIf="serverData.slider && serverData.slider.length"> 
             <div class="owl-carousel owl-theme home-slider" id="slider1">
-                <div class="owl-item banner-large centered-img" [ngStyle]="item.style" *ngFor="let item of allInfo.slider">
-                    <h1 class="banner-title">{{ item.title}}</h1>
+                <div class="owl-item banner-large centered-img" [ngStyle]="item.style" *ngFor="let item of serverData.slider">
+                    <h1 class="banner-title">{{ item.name}}</h1>
                     <a href="" class="btn fixed-btn">GET STARTED</a>
-                </div>
-               
+                </div> 
             </div>
         </div>
     </div>
     <!-- ABOUT  US-->
     <section class="about-section" id="about">
         <h2 class="section-title"> About Us </h2>
-        <p  *ngIf="allInfo.custom_data && allInfo.custom_data.about_text">
-            {{allInfo.custom_data.about_text}}
+        <p  *ngIf="serverData.custom_data && serverData.custom_data.about_text">
+            {{serverData.custom_data.about_text}}
         </p>
     </section>
 
@@ -169,10 +169,10 @@
         <a style="width:200px;margin:0 auto " href="" class="btn">GET STARTED</a>
     </section>
     <!-- SERVICES -->
-    <section class="services-section" id="services" *ngIf="allInfo.services && allInfo.services.length">
+    <section class="services-section" id="services" *ngIf="serverData.services && serverData.services.length">
         <h2 class="section-title">SERVICES</h2>
         <ul class="product-item-container filtered-results" >
-            <li *ngFor="let item of allInfo.services">
+            <li *ngFor="let item of serverData.services">
                 <div class="shirma"></div>
                 <div class="product-hover-section">
                     <h4 class="product-title pr-title1">{{ item.name}}</h4>
@@ -185,19 +185,19 @@
     </section>
     <!-- TESTIMONIALS-->
     <section class="testimonials-section centered-img" >
-        <div class="slider-inner"*ngIf="allInfo.testimonials && allInfo.testimonials.length">
+        <div class="slider-inner"*ngIf="serverData.testimonials && serverData.testimonials.length">
             <div class="owl-carousel owl-theme testimonials-slider" id="sliderTestimonials">
-                <div class="owl-item" *ngFor="let item of allInfo.testimonials">
+                <div class="owl-item" *ngFor="let item of serverData.testimonials">
                     <div class="testimonials-container">
                         <div class="testimonials-avatar" [ngStyle]="item.style"></div>
                         <div class="testimonial-text">
-                            <h4 class="person-name">{{item.title}}</h4>
+                            <h4 class="person-name">{{item.name}}</h4>
                             <p>{{ item.description }}</p>
                         </div>
                     </div>
                 </div> 
             </div>
-            <div [hidden]="allInfo.testimonials.length==1" class="testimonials-dots"></div>
+            <div [hidden]="serverData.testimonials.length==1" class="testimonials-dots"></div>
         </div> 
     </section>
     <contacts></contacts>

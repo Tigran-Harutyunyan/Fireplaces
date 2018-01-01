@@ -1,5 +1,6 @@
-import {Component, OnInit,  AfterViewInit} from '@angular/core';
+import { Component, OnInit,  AfterViewInit } from '@angular/core';
 import { customerApiService } from "../../shared/httpRequests.service"; 
+import { IServerData } from "../../shared/allData.model";
 declare var jquery : any;
 declare var $ : any;
 
@@ -8,12 +9,10 @@ declare var $ : any;
 export class HomeComponent implements AfterViewInit {
   constructor(  private customerApi: customerApiService ) { }
   public showApp: boolean = false;
-  public allInfo : {};
+  public serverData: IServerData;
   ngOnInit(){
-    this.allInfo = this.customerApi.getAllInfo();
-    console.log(this.allInfo)
-  }
-
+    this.serverData = this.customerApi.getAllInfo(); 
+  } 
   ngAfterViewInit() {
     $("#slider1").owlCarousel({
       autoplay: true,

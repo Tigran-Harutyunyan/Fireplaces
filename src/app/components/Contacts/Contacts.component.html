@@ -11,21 +11,22 @@
         </agm-map>
         <div class="form-place">
             <div class="form-container">
-                <form class="contact-form" id="contact_form" name="contact_form" novalidate>
+                <form class="contact-form" id="contact_form"  
+                   [formGroup]="contactForm" (ngSubmit)="onSubmit(contactForm)">
                     <div class="contact-form-referral ref1">
-                        <div class="default-inp-row split-row ">
-                            <input id="contact_name" class="def-input" type="text" placeholder="Name" name="contact_name">
-                            <input id="contact_zip" class="def-input" type="email" placeholder="Zip code" name="contact_zip">
+                        <div class="default-inp-row split-row">
+                            <input id="contact_name" class="def-input" type="text" placeholder="Name" formControlName="name">
+                            <input id="contact_zip" class="def-input" type="email" placeholder="Zip code" formControlName="zip">
                         </div>
                         <div class="default-inp-row split-row ">
-                            <input id="contact_email" class="def-input" type="email" placeholder="Email" name="contact_email">
-                            <input id="contact_name" class="def-input" type="text" placeholder="Phone" name="phone">
+                            <input id="contact_email" class="def-input" type="email" placeholder="Email" formControlName="email" name="contact_email">
+                            <input id="contact_name" class="def-input" type="text" placeholder="Phone"  formControlName="phone">
                         </div>
-                        <div class="default-inp-row ">
-                            <textarea id="contact_message" class="def-input" placeholder="Message" cols="30" rows="10" name="contact_message"></textarea>
+                        <div class="default-inp-row">
+                            <textarea id="contact_message" class="def-input" placeholder="Message"  formControlName="message" cols="30" rows="10"></textarea>
                         </div>
                         <div class="default-inp-row row-btn">
-                            <input type="submit" class="btn-submit btn" id="contact-us-btn" value="Send">
+                            <input type="submit" class="btn-submit btn"  id="contact-us-btn" value="Send"> 
                         </div>
                     </div>
                 </form>
@@ -33,9 +34,9 @@
         </div>
         <div class="contacts-bottom mobile-socials">
             <div class="social-icons ">
-                <a href="https://www.facebook.com/Core-Fireplace-Grills-256417668217459/?modal=admin_todo_tour" target="_blank" class="fb-link"></a>
-                <a href="https://www.instagram.com/corefireplace/" target="_blank" class="tw-link"></a>
-                <a href="https://www.yelp.com/biz/core-fireplace-and-grills-san-fernando?osq=corefireplaces" target="_blank" class="in-link"></a>
+                <a href="{{ serverData.custom_data.facebook_link }}" target="_blank" class="fb-link"></a>
+                <a href="{{ serverData.custom_data.instagram_link }}" target="_blank" class="tw-link"></a>
+                <a href="{{ serverData.custom_data.instagram_link }}" target="_blank" class="in-link"></a>
             </div>
         </div>
         <div class="contacts-bottom copyright-outer">
@@ -54,9 +55,9 @@
                 </div>
             </div>
             <div class="social-icons social-desktop">
-                <a href="https://www.facebook.com/Core-Fireplace-Grills-256417668217459/?modal=admin_todo_tour" target="_blank" class="fb-link"></a>
-                <a href="https://www.instagram.com/corefireplace/" target="_blank" class="tw-link"></a>
-                <a href="https://www.yelp.com/biz/core-fireplace-and-grills-san-fernando?osq=corefireplaces" target="_blank" class="in-link"></a>
+                <a href="{{ serverData.custom_data.facebook_link }}" target="_blank" class="fb-link"></a>
+                <a href="{{ serverData.custom_data.instagram_link }}" target="_blank" class="tw-link"></a>
+                <a href="{{ serverData.custom_data.instagram_link }}" target="_blank" class="in-link"></a>
             </div>
             <div class="subscription-form" style="padding: 0;">
                 <form id="subscription_form" name="subscription_form" novalidate>
