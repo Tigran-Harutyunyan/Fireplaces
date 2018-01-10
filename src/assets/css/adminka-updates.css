@@ -1,0 +1,18 @@
+.copyright {
+    display: none
+}
+.logo {
+    margin-left: 34px;
+}
+.catergory-place {
+    margin-top: 30px;
+}
+.sidebar-nav {
+   padding-top: 0;  
+}
+.sidebar-nav li {
+    padding: 10px 5px 9px 36px;
+}
+.sidebar-nav a {
+    font-size: 14px; 
+}

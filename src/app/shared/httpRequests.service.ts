@@ -10,8 +10,8 @@ import {debug} from 'util';
 @Injectable()
 
 export class customerApiService {
-    constructor(private http : Http, private router : Router, private errHandler : ErrorHandlerService) {} 
-    apiPath = "http://api.corefireplace.com"; 
+    constructor(private http : Http, private router : Router, private errHandler : ErrorHandlerService) {}
+    apiPath = "http://api.corefireplace.com";
     allData : IServerData;
     options = new RequestOptions({
         headers: new Headers({
@@ -45,7 +45,6 @@ export class customerApiService {
                 if (response.json().error) {
                     this.handleError(response.json());
                 } else {
-
                     this.allData = this.proccessData(response.json());
                     return this.allData;
                 }
@@ -88,6 +87,35 @@ export class customerApiService {
                     }
                 });
         }
+        if (data.fireplaceSizeRanges) {
+            data
+                .fireplaceSizeRanges
+                .forEach(element => {
+                    element.isChecked = false
+                });
+        }
+        if (data.fuelTypes) {
+            data
+                .fuelTypes
+                .forEach(element => {
+                    element.isChecked = false
+                });
+        }
+        if (data.heatOutputRanges) {
+            data
+                .heatOutputRanges
+                .forEach(element => {
+                    element.isChecked = false
+                });
+        }
+        if (data.priceRanges) {
+            data
+                .priceRanges
+                .forEach(element => {
+                    element.isChecked = false
+                });
+        }
+
         return data;
     };
     public getAllInfo() {
@@ -100,7 +128,7 @@ export class customerApiService {
         let headers = new Headers();
         headers.append('Accept', 'application/json');
         let options = new RequestOptions({headers: headers});
-         
+
         return this
             .http
             .post(url, JSON.stringify(formData), options)

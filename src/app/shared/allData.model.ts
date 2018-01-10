@@ -5,7 +5,37 @@
     image : string,
     imgUrl : string
 }
-
+interface EnumSizeItem {
+    id : number 
+    name : number 
+    isChecked: boolean 
+}
+interface EnumHeatOutputRangeItem {
+    id : number 
+    name : number 
+    isChecked: boolean
+}
+interface EnumPriceRangeItem {
+    id : number 
+    name : number 
+    isChecked: boolean  
+} 
+interface EnumFuelTypeItem {
+    id : number,
+    name : string,
+    description : string,
+    image : string,
+    imgUrl : string,
+    isChecked: boolean  
+} 
+interface EnumFireplaceItem {
+    id : number 
+    name : string 
+    description : string 
+    image : string 
+    imgUrl : string 
+    isChecked: boolean  
+} 
 interface ICustomData {
     phone : string
     email : string
@@ -34,14 +64,17 @@ interface IProduct {
     fireplaceType : string
 }
 export interface IServerData {
-    slider : Array < ISliderItem > 
+    slider : Array < ISliderItem >  
     gallery : Array < ISliderItem > 
     services : Array < ISliderItem >
-    fuelTypes: Array < ISliderItem >
-    fireplaceTypes: Array < ISliderItem >
+    fuelTypes: Array < EnumFuelTypeItem >
+    fireplaceTypes: Array < EnumFireplaceItem >
+    fireplaceSizeRanges: Array < EnumSizeItem >
+    heatOutputRanges: Array < EnumHeatOutputRangeItem >
     testimonials: Array < ISliderItem >
     fireplaceOptionsAndAccessories: Array < ISliderItem >
     products : Array < IProduct >  
-    custom_data :   ICustomData   
+    priceRanges: Array < EnumPriceRangeItem > 
+    custom_data :  ICustomData   
 }
  
