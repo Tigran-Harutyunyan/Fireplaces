@@ -87,6 +87,13 @@ export class customerApiService {
                     }
                 });
         }
+        if (data.fireplaceOptionsAndAccessories) { 
+            data
+                .fireplaceOptionsAndAccessories
+                .forEach(element => {
+                    element.imgSrc =  `${this.apiPath}/images/options_and_accessory/${element.image}`; 
+                });
+        }
         if (data.fireplaceSizeRanges) {
             data
                 .fireplaceSizeRanges

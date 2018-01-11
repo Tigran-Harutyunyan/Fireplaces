@@ -1,12 +1,14 @@
 import {Component, OnInit, AfterViewInit} from '@angular/core';
-
+import { customerApiService } from "../../shared/httpRequests.service"; 
+import { IServerData } from "../../shared/allData.model"; 
 declare var jquery : any;
 declare var $ : any;
 
 @Component({templateUrl: './ProductDetails.component.html'})
 
 export class ProductDetailsComponent implements AfterViewInit {
-  constructor() {}
+  constructor(  private customerApi: customerApiService ) { }
+  public serverData: IServerData;
   ngAfterViewInit() {
     $(".accessories-slider")
       .each(function () {
@@ -45,4 +47,7 @@ export class ProductDetailsComponent implements AfterViewInit {
       });
 
   };
+  ngOnInit() {
+    this.serverData =  this.customerApi.getAllInfo();  
+};
 }

@@ -90,81 +90,21 @@
         </div> 
     </section>
     <!-- Options & accessories  -->
-    <section class="accessories-section services-section" style="padding-bottom: 0;">
+    <section class="accessories-section services-section" style="padding-bottom: 0;" *ngIf="serverData.fireplaceOptionsAndAccessories && serverData.fireplaceOptionsAndAccessories.length">
         <h2 class="section-title">Options & accessories</h2>
         <ul class="product-item-container filtered-results  owl-carousel owl-theme accessories-slider" id="productsSlider">
-            <li class="owl-item">
+            <li class="owl-item"  *ngFor="let item of serverData.fireplaceOptionsAndAccessories">
                 <a class="ticket-link" href="javascript:void(0)">
                     <div class="shirma"></div>
                     <div class="product-hover-section hover2">
-                        <h4 class="product-title pr-title1">PHAZER® Oak Log Set</h4>
+                        <h4 class="product-title pr-title1">{{item.name}}</h4>
                         <!-- <a class="btn fixed-btn">VIEW MORE</a> -->
                     </div>
 
-                    <img src="./assets/images/option1.jpg" alt="">
+                    <img src="{{ item.imgSrc }}" alt="{{item.name}}">
                 </a>
-                <h4 class="product-title pr-title2">PHAZER® Oak Log Set</h4>
-            </li>
-            <li class="owl-item">
-                <a class="ticket-link" href="javascript:void(0)">
-                    <div class="shirma"></div>
-                    <div class="product-hover-section hover2">
-                        <h4 class="product-title pr-title1">PHAZER® Log Set</h4>
-                        <!-- <a class="btn fixed-btn">VIEW MORE</a> -->
-                    </div>
-
-                    <img src="./assets/images/option2.jpg" alt="">
-                </a>
-                <h4 class="product-title pr-title2">PHAZER® Log Set</h4>
-            </li>
-            <li class="owl-item">
-                <a class="ticket-link" href="javascript:void(0)">
-                    <div class="shirma"></div>
-                    <div class="product-hover-section hover2">
-                        <h4 class="product-title pr-title1">Fire Cradle</h4>
-                        <!-- <a class="btn fixed-btn">VIEW MORE</a> -->
-                    </div>
-
-                    <img src="./assets/images/option3.jpg" alt="">
-                </a>
-                <h4 class="product-title pr-title2">Fire Cradle</h4>
-            </li>
-            <li class="owl-item">
-                <a class="ticket-link" href="javascript:void(0)">
-                    <div class="shirma"></div>
-                    <div class="product-hover-section hover2">
-                        <h4 class="product-title pr-title1">PHAZER® Oak Log Set</h4>
-                        <!-- <a class="btn fixed-btn">VIEW MORE</a> -->
-                    </div>
-
-                    <img src="./assets/images/option1.jpg" alt="">
-                </a>
-                <h4 class="product-title pr-title2">PHAZER® Oak Log Set</h4>
-            </li>
-            <li class="owl-item">
-                <a class="ticket-link" href="javascript:void(0)">
-                    <div class="shirma"></div>
-                    <div class="product-hover-section hover2">
-                        <h4 class="product-title pr-title1">PHAZER® Log Set</h4>
-                        <!-- <a class="btn fixed-btn">VIEW MORE</a> -->
-                    </div>
-
-                    <img src="./assets/images/option2.jpg" alt="">
-                </a>
-                <h4 class="product-title pr-title2">PHAZER® Log Set</h4>
-            </li>
-            <li class="owl-item">
-                <a class="ticket-link" href="javascript:void(0)">
-                    <div class="shirma"></div>
-                    <div class="product-hover-section hover2">
-                        <h4 class="product-title pr-title1">Fire Cradle</h4>
-                        <!-- <a class="btn fixed-btn">VIEW MORE</a> -->
-                    </div>
-
-                    <img src="./assets/images/option3.jpg" alt="">
-                </a>
-                <h4 class="product-title pr-title2">Fire Cradle</h4>
-            </li>
+                <h4 class="product-title pr-title2">{{item.name}}</h4>
+            </li> 
         </ul>
         <div class="products-dots"></div>
         <h6>Build your own fireplace</h6>
