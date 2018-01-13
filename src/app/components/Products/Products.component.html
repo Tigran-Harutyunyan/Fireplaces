@@ -23,48 +23,55 @@
         <div class="filters-place">
             <div class="filter-section">
                 <h3>Fireplace size</h3>
-                <div class="filter-item" *ngFor="let item of serverData.fireplaceSizeRanges; let i = index" >
-                    <input type="checkbox" [id]="'size' + i" 
-                     [checked]="item.isChecked" (change)="item.isChecked=!item.isChecked" />
-                    <label [for]="'size' + i"  class="filter-label">
+                <div class="filter-item" *ngFor="let item of serverData.fireplaceSizeRanges; let i = index">
+                    <input type="checkbox" [id]="'size' + i" [checked]="item.isChecked" (click)="item.isChecked=!item.isChecked;changeDetector()" />
+                    <label [for]="'size' + i" class="filter-label">
                         <span></span>{{ item.name}}</label>
-                </div> 
+                </div>
             </div>
             <div class="filter-section">
                 <h3>Fuel type</h3>
-                <div class="filter-item" *ngFor="let item of serverData.fuelTypes; let i = index" >
-                    <input type="checkbox"  [id]="'fuel' + i" 
-                     [checked]="item.isChecked" (change)="item.isChecked=!item.isChecked" />
+                <div class="filter-item" *ngFor="let item of serverData.fuelTypes; let i = index">
+                    <input type="checkbox" [id]="'fuel' + i" [checked]="item.isChecked" (click)="item.isChecked=!item.isChecked;changeDetector()" />
                     <label [for]="'fuel' + i" class="filter-label">
                         <span></span>{{ item.name}}</label>
-                </div> 
+                </div>
             </div>
             <div class="filter-section">
                 <h3>Heat output</h3>
-                <div class="filter-item" *ngFor="let item of serverData.heatOutputRanges; let i = index" >
-                    <input type="checkbox" [id]="'heat' + i" 
-                     [checked]="item.isChecked" (change)="item.isChecked=!item.isChecked" />
+                <div class="filter-item" *ngFor="let item of serverData.heatOutputRanges; let i = index">
+                    <input type="checkbox" [id]="'heat' + i" [checked]="item.isChecked" (click)="item.isChecked=!item.isChecked;changeDetector()" />
                     <label [for]="'heat' + i" class="filter-label">
                         <span></span>{{ item.name}}</label>
-                </div> 
+                </div>
             </div>
             <div class="filter-section">
                 <h3>Price</h3>
-                <div class="filter-item" *ngFor="let item of serverData.priceRanges; let i = index" >
-                    <input type="checkbox" [id]="'price' + i" 
-                     [checked]="item.isChecked" (change)="item.isChecked=!item.isChecked" />
+                <div class="filter-item" *ngFor="let item of serverData.priceRanges; let i = index">
+                    <input type="checkbox" [id]="'price' + i" [checked]="item.isChecked" (click)="item.isChecked=!item.isChecked;changeDetector()" />
                     <label [for]="'price' + i" class="filter-label">
                         <span></span>{{ item.name}}</label>
-                </div> 
+                </div>
             </div>
-        </div>
-        <a class="btn fixed-btn" (click)="filterProducts()">Filter</a>
+        </div> 
+        
+       <!--  <div class="cs-loader" *ngIf="loading">
+            <div class="cs-loader-inner">
+                <label>	●</label>
+                <label>	●</label>
+                <label>	●</label>
+                <label>	●</label>
+                <label>	●</label>
+                <label>	●</label>
+            </div>
+        </div> -->
+        <!-- <a class="btn fixed-btn" (click)="filterProducts()">Filter</a> -->
     </section>
 
     <!-- SERVICES -->
-    <section class="services-section" style="padding-bottom: 0;">
-        <ul class="product-item-container filtered-results">
-            <li>
+    <section class="services-section" style="padding-bottom: 0;"> 
+        <ul class="product-item-container filtered-results" *ngIf="filterResults && filterResults.length > 0">
+            <li *ngFor="let item of filterResults">
                 <div class="shirma"></div>
                 <div class="product-hover-section">
                     <h4 class="product-title pr-title1">ASCENT</h4>
@@ -73,52 +80,10 @@
                 <h4 class="product-title pr-title2">ASCENT</h4>
                 <img src="./assets/images/fireplace1.jpg" alt="">
             </li>
-            <li>
-                <div class="shirma"></div>
-                <div class="product-hover-section">
-                    <h4 class="product-title pr-title1">HIGH DEFINITION 46 - HD46</h4>
-                    <a class="btn fixed-btn">VIEW MORE</a>
-                </div>
-                <h4 class="product-title pr-title2">High definition 46 - hd46</h4>
-                <img src="./assets/images/fireplace2.jpg" alt="">
-            </li>
-            <li>
-                <div class="shirma"></div>
-                <div class="product-hover-section">
-                    <h4 class="product-title pr-title1">Plazmafire 48 - whd48</h4>
-                    <a class="btn fixed-btn">VIEW MORE</a>
-                </div>
-                <h4 class="product-title pr-title2">Plazmafire 48 - whd48</h4>
-                <img src="./assets/images/fireplace3.jpg" alt="">
-            </li>
-            <li>
-                <div class="shirma"></div>
-                <div class="product-hover-section">
-                    <h4 class="product-title pr-title1">Starfire 35 - hdx35</h4>
-                    <a class="btn fixed-btn">VIEW MORE</a>
-                </div>
-                <h4 class="product-title pr-title2">Starfire 35 - hdx35</h4>
-                <img src="./assets/images/fireplace4.jpg" alt="">
-            </li>
-            <li>
-                <div class="shirma"></div>
-                <div class="product-hover-section">
-                    <h4 class="product-title pr-title1">Grandville vf36 - gvf36</h4>
-                    <a class="btn fixed-btn">VIEW MORE</a>
-                </div>
-                <h4 class="product-title pr-title2">Grandville vf36 - gvf36</h4>
-                <img src="./assets/images/fireplace5.jpg" alt="">
-            </li>
-            <li>
-                <div class="shirma"></div>
-                <div class="product-hover-section">
-                    <h4 class="product-title pr-title1">BBQ & Grils</h4>
-                    <a class="btn fixed-btn">VIEW MORE</a>
-                </div>
-                <h4 class="product-title pr-title2">BBQ & Grils</h4>
-                <img src="./assets/images/fireplace6.jpg" alt="">
-            </li>
         </ul>
-    </section> 
+        <div class="no-results" *ngIf="noRecords">
+            No products found.
+        </div>
+    </section>
     <contacts></contacts>
 </div>
