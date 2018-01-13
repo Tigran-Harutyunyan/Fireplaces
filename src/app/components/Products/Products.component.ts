@@ -12,7 +12,7 @@ export class ProductsComponent implements AfterViewInit {
   public filterResults : any[];
   public noRecords : boolean = false;
   public loading : boolean = false;
-  public changeDetector() {
+  public filterProducts() {
     this.loading = true;
     let filter = {
       fuelTypes: [],
@@ -20,6 +20,7 @@ export class ProductsComponent implements AfterViewInit {
       heatOutputRanges: [],
       priceRanges: []
     }
+    console.log(filter)
     this
       .serverData
       .fuelTypes
@@ -110,6 +111,6 @@ export class ProductsComponent implements AfterViewInit {
     this.serverData = this
       .customerApi
       .getAllInfo();
-    this.changeDetector();
+    this.filterProducts();
   };
 }
