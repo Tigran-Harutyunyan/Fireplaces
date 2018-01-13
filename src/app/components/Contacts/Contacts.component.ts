@@ -3,11 +3,15 @@ import {FormBuilder, Validators, FormGroup, FormControl} from '@angular/forms';
 import {emailValidator} from "../../shared/Validators/validators";
 import {customerApiService} from "../../shared/httpRequests.service";
 import {IServerData} from "../../shared/allData.model";
+import * as toastr from 'toastr'; 
+declare var jquery:any;
+declare var $ :any;
 @Component({selector: 'contacts', templateUrl: './Contacts.component.html'})
 
 export class ContactsComponent implements OnInit {
     constructor(public fb : FormBuilder, private customerApi : customerApiService) {}
     public contactForm : FormGroup;
+    public subscribeForm : FormGroup;
     public lat : number = 34.239063;
     public lng : number = -118.393227;
     public zoom : number = 10;
@@ -15,7 +19,7 @@ export class ContactsComponent implements OnInit {
         lat: 34.239063,
         lng: -118.393227
     }
-    public serverData: IServerData;
+    public serverData : IServerData;
     public mapStyle = [
         {
             "featureType": "administrative",
@@ -98,46 +102,63 @@ export class ContactsComponent implements OnInit {
                     this.validateAllFormFields(control);
                 }
             });
-    }
+    };
     public onSubmit(form : FormGroup) {
         if (this.contactForm.valid) {
-            /*
-            let queryString = `contact_subject=${encodeURIComponent(this.contactForm.value.name)}`;
-            queryString += `&contact_message=${encodeURIComponent(this.contactForm.value.message)}`;
-            queryString += `&contact_phone=${encodeURIComponent(this.contactForm.value.phone)}`;
-            queryString += `&contact_email=${encodeURIComponent(this.contactForm.value.email)}`; */
             let formData = {
-                contact_name: encodeURIComponent(this.contactForm.value.name),
-                contact_message: encodeURIComponent(this.contactForm.value.message),
-                contact_phone: encodeURIComponent(this.contactForm.value.phone),
-                contact_email: encodeURIComponent(this.contactForm.value.email)
-            }
-
+                contact_name: this.contactForm.value.name,
+                contact_message: this.contactForm.value.message,
+                contact_phone: this.contactForm.value.phone,
+                contact_email: this.contactForm.value.email,
+                contact_zip_code: this.contactForm.value.zipCode 
+            };
             this
                 .customerApi
                 .sendMail(formData)
                 .subscribe(data => {
-                    if (!data.error) {
-                        //this.router.navigate[''];
-                    } else {}
-                }, (err) => {});
+                    if (data.success) {
+                        toastr.success("Send email success.");
+                    } else {
+                        toastr.error("Send email error.");
+                    }
+                }, (err) => {
+                    toastr.error("Server error.");
+                });
         } else {
             this.validateAllFormFields(this.contactForm);
         }
-        let queryString;
-        //let   params = contact_subject,contact_email,contact_message;
-        /*   this.customerApi
-            .postRequest(queryString)
-            .subscribe(data => {
-                if (!data.error) {
-                    //this.router.navigate[''];
-                } else {}
-            }, (err) => {}); */
     };
-    ngOnInit() {  
+    public onSubmitSubscribe(form : FormGroup) {
+        if (this.subscribeForm.valid) {
+            this
+                .customerApi
+                .subscribe(this.subscribeForm.value.email)
+                .subscribe(data => {
+                    if (data.success) {
+                        toastr.success("Subsribe success.");
+                    } else {
+                        toastr.error("Subsribe error.");
+                    }
+                }, (err) => {
+                    toastr.error("Server error.");
+                });
+        } else {
+            this.validateAllFormFields(this.subscribeForm);
+        }
+        let queryString;
+
+    };
+    ngOnInit() { 
         this.serverData = this
-        .customerApi
-        .getAllInfo();
+            .customerApi
+            .getAllInfo();
+        this.subscribeForm = this
+            .fb
+            .group({
+                email: [
+                    '', Validators.compose([Validators.required, emailValidator])
+                ]
+            });
         this.contactForm = this
             .fb
             .group({
@@ -147,7 +168,7 @@ export class ContactsComponent implements OnInit {
                 phone: [
                     '', Validators.required
                 ],
-                zip: [
+                zipCode: [
                     '', Validators.required
                 ],
                 email: [

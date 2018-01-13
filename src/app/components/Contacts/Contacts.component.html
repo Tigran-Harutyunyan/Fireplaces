@@ -1,32 +1,27 @@
 <!-- CONTACTS  -->
 <section id="contacts" class="contact-section">
     <h2 class="section-title">CONTACT US</h2>
-    <div class="contacts-inner"> 
-        <agm-map  class="map-container" id="map"
-             [latitude]="lat" 
-             [longitude]="lng" 
-             [styles]="mapStyle"
-             [zoom]="zoom">
-             <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+    <div class="contacts-inner">
+        <agm-map class="map-container" id="map" [latitude]="lat" [longitude]="lng" [styles]="mapStyle" [zoom]="zoom">
+            <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
         </agm-map>
         <div class="form-place">
             <div class="form-container">
-                <form class="contact-form" id="contact_form"  
-                   [formGroup]="contactForm" (ngSubmit)="onSubmit(contactForm)">
+                <form class="contact-form" id="contact_form" [formGroup]="contactForm" (ngSubmit)="onSubmit(contactForm)">
                     <div class="contact-form-referral ref1">
                         <div class="default-inp-row split-row">
                             <input id="contact_name" class="def-input" type="text" placeholder="Name" formControlName="name">
-                            <input id="contact_zip" class="def-input" type="email" placeholder="Zip code" formControlName="zip">
+                            <input id="contact_zip" class="def-input" type="text" placeholder="Zip code" formControlName="zipCode">
                         </div>
                         <div class="default-inp-row split-row ">
                             <input id="contact_email" class="def-input" type="email" placeholder="Email" formControlName="email" name="contact_email">
-                            <input id="contact_name" class="def-input" type="text" placeholder="Phone"  formControlName="phone">
+                            <input id="contact_phone" class="def-input" type="text" placeholder="Phone" formControlName="phone">
                         </div>
                         <div class="default-inp-row">
-                            <textarea id="contact_message" class="def-input" placeholder="Message"  formControlName="message" cols="30" rows="10"></textarea>
+                            <textarea id="contact_message" class="def-input" placeholder="Message" formControlName="message" cols="30" rows="10"></textarea>
                         </div>
                         <div class="default-inp-row row-btn">
-                            <input type="submit" class="btn-submit btn"  id="contact-us-btn" value="Send"> 
+                            <input type="submit" class="btn-submit btn" id="contact-us-btn" value="Send">
                         </div>
                     </div>
                 </form>
@@ -60,8 +55,10 @@
                 <a href="{{ serverData.custom_data.instagram_link }}" target="_blank" class="in-link"></a>
             </div>
             <div class="subscription-form" style="padding: 0;">
-                <form id="subscription_form" name="subscription_form" novalidate>
-                    <input id="subscribe" class="def-input" type="email" placeholder="Your email address" name="subscription_mail">
+                <form id="subscription_form" name="subscription_form" novalidate
+                    [formGroup]="subscribeForm" (ngSubmit)="onSubmitSubscribe(subscribeForm)">
+                    <input id="subscribe" class="def-input" type="email" placeholder="Your email address" name="subscription_mail"
+                     formControlName="email">
                     <input type="submit" class="btn-submit btn" id="subscribe-btn" value="Subscribe">
                 </form>
             </div>
