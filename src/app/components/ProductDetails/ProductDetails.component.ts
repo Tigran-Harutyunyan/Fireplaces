@@ -9,6 +9,7 @@ declare var $ : any;
 export class ProductDetailsComponent implements AfterViewInit {
   constructor(  private customerApi: customerApiService ) { }
   public serverData: IServerData;
+  public product: any;
   ngAfterViewInit() {
     $(".accessories-slider")
       .each(function () {
@@ -48,6 +49,7 @@ export class ProductDetailsComponent implements AfterViewInit {
 
   };
   ngOnInit() {
-    this.serverData =  this.customerApi.getAllInfo();  
-};
+      this.serverData =  this.customerApi.getAllInfo();  
+      this.product = this.serverData.products[0];
+  };
 }
