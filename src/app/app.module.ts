@@ -6,7 +6,8 @@ import { HttpModule } from '@angular/http';
 import { appRoutes } from './routes';
 import { AppComponent } from './app.component'; 
 import { AgmCoreModule } from '@agm/core';
-//import {ToastrModule} from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+ 
 import {
   HomeComponent,
   DashboardComponent,
@@ -33,8 +34,8 @@ import {
     BrowserModule,
     FormsModule,
     HttpModule, 
-    ReactiveFormsModule,
-    //ToastrModule.forRoot(),
+    BrowserAnimationsModule,
+    ReactiveFormsModule, 
     RouterModule.forRoot(appRoutes, { 
       useHash: true
     }),
