@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
-import {Headers, Http, RequestOptions} from '@angular/http'
+import {Headers, Http, RequestOptions} from '@angular/http';
+import {URLSearchParams} from '@angular/http';
 import {Router} from '@angular/router';
 import {Observable} from 'rxjs/Rx'
 //import {ToastrService} from 'ngx-toastr';
@@ -87,11 +88,11 @@ export class customerApiService {
                     }
                 });
         }
-        if (data.fireplaceOptionsAndAccessories) { 
+        if (data.fireplaceOptionsAndAccessories) {
             data
                 .fireplaceOptionsAndAccessories
                 .forEach(element => {
-                    element.imgSrc =  `${this.apiPath}/images/options_and_accessory/${element.image}`; 
+                    element.imgSrc = `${this.apiPath}/images/options_and_accessory/${element.image}`;
                 });
         }
         if (data.fireplaceSizeRanges) {
@@ -128,17 +129,21 @@ export class customerApiService {
     public getAllInfo() {
         return this.allData;
     };
-    // ======= GENERIC POST REQUEST ====================
 
-    sendMail(formData : Object) : Observable < any > {
+    // ================= CONTACT POST REQUEST ====================
+
+    public sendMail(formData : any) : Observable < any > {
         var url = `${this.apiPath}/api/sendEmail`;
-        let headers = new Headers();
-        headers.append('Accept', 'application/json');
-        let options = new RequestOptions({headers: headers});
+        let urlSearchParams = new URLSearchParams();
+        urlSearchParams.append('contact_name', formData.contact_name);
+        urlSearchParams.append('contact_message', formData.contact_message);
+        urlSearchParams.append('contact_phone', formData.contact_phone);
+        urlSearchParams.append('contact_email', formData.contact_email);
+        urlSearchParams.append('contact_zip_code', formData.contact_zip_code);
 
         return this
             .http
-            .post(url, JSON.stringify(formData), options)
+            .post(url, urlSearchParams)
             .map((response) => {
                 if (response.json().error) {
                     this.handleError(response.json());
@@ -148,10 +153,88 @@ export class customerApiService {
             .catch(error => {
                 this.handleError(error.json());
                 return Observable.empty();
-            })
-
+            });
     };
 
+    // ================= SUBSCRIBE POST REQUEST ====================
+
+    public subscribe(email : string) : Observable < any > {
+        var url = `${this.apiPath}/api/addSubscriber`;
+        let urlSearchParams = new URLSearchParams();
+        urlSearchParams.append('contact_email_subscribe', email);
+        return this
+            .http
+            .post(url, urlSearchParams)
+            .map((response) => {
+                if (response.json().error) {
+                    this.handleError(response.json());
+                }
+                return response.json();
+            })
+            .catch(error => {
+                this.handleError(error.json());
+                return Observable.empty();
+            });
+    };
+    // ================= CONTACT POST REQUEST ======================
+
+    public filterProducts(filter : any) : Observable < any > {
+        var url = `${this.apiPath}/api/filterProducts`;
+        let urlSearchParams = new URLSearchParams();
+        if (filter.fuelTypes.length) {
+            urlSearchParams.append('fuel_type_id', JSON.stringify(filter.fuelTypes));
+        }
+        if (filter.fireplaceSizeRanges.length) {
+            urlSearchParams.append('fireplace_size_range_id', JSON.stringify(filter.fireplaceSizeRanges));
+        }
+        if (filter.heatOutputRanges.length) {
+            urlSearchParams.append('heat_output_range_id', JSON.stringify(filter.heatOutputRanges));
+        }
+        if (filter.priceRanges.length) {
+            urlSearchParams.append('price_range_id', JSON.stringify(filter.priceRanges));
+        }
+
+        return this
+            .http
+            .post(url, urlSearchParams)
+            .map((response) => {
+                if (response.json().error) {
+                    this.handleError(response.json());
+                }
+                let _response = response.json(); 
+                if (_response.data) {
+                    _response
+                        .data
+                        .forEach(element => {
+                            element.imgUrl = `${this.apiPath}/images/products/${element.image}`;
+                        });
+                } 
+                return _response;
+            })
+            .catch(error => {
+                this.handleError(error.json());
+                return Observable.empty();
+            });
+    };
+    // ================= GET PRODUCT BY ID =========================
+    public getProductById(id : any) : Observable < any > {
+        var url = `${this.apiPath}/api/filterProducts`;
+        let urlSearchParams = new URLSearchParams();
+        urlSearchParams.append('price_range_id', JSON.stringify(id));
+        return this
+            .http
+            .post(url, urlSearchParams)
+            .map((response) => {
+                if (response.json().error) {
+                    this.handleError(response.json());
+                }
+                return response.json();
+            })
+            .catch(error => {
+                this.handleError(error.json());
+                return Observable.empty();
+            });
+    };
     //========= HANDLE HTTP ERRORS =================
 
     private handleError(error : any) {
