@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* -----------------------
 Base styles
 ------------------------*/
@@ -5092,6 +5093,7 @@ textarea.ng-dirty.ng-invalid {
 }
 
 .filters-section {
+  position: relative;
   padding-bottom: 40px;
   background-color: #fafafa;
 }
@@ -5618,6 +5620,10 @@ footer a {
   display: none;
 }
 
+.no-results {
+  text-align: center;
+}
+
 h4.product-title.pr-title2 {
   bottom: 27px;
   z-index: 2;
@@ -5699,6 +5705,15 @@ h4.product-title.pr-title2 {
   font-size: 16px;
   color: #5c5c5c;
   line-height: 26px;
+}
+.additional-details-section p {
+  font-size: 18px;
+  color: #5c5c5c;
+  max-width: 970px;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 30px;
+  padding: 26px 30px;
 }
 
 .spacer-details {
@@ -7881,6 +7896,111 @@ a.jp-disabled:hover {
     margin-right: 20px;
   }
 }
+/* <div class="cs-loader" *ngIf="loading">
+    <div class="cs-loader-inner">
+        <label>	●</label>
+        <label>	●</label>
+        <label>	●</label>
+        <label>	●</label>
+        <label>	●</label>
+        <label>	●</label>
+    </div>
+</div> */
+.cs-loader {
+  bottom: 0;
+  left: 0;
+  height: 45px;
+  width: 100%;
+}
+
+.cs-loader-inner {
+  transform: translateY(-50%);
+  top: 50%;
+  position: absolute;
+  width: 100%;
+  color: #f8a225;
+  padding: 0 100px;
+  text-align: center;
+}
+
+.cs-loader-inner label {
+  font-size: 20px;
+  opacity: 0;
+  display: inline-block;
+}
+
+@keyframes lol {
+  0% {
+    opacity: 0;
+    transform: translateX(-300px);
+  }
+
+  33% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+
+  66% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(300px);
+  }
+}
+@-webkit-keyframes lol {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-300px);
+  }
+
+  33% {
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+  }
+
+  66% {
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+  }
+
+  100% {
+    opacity: 0;
+    -webkit-transform: translateX(300px);
+  }
+}
+.cs-loader-inner label:nth-child(6) {
+  -webkit-animation: lol 3s infinite ease-in-out;
+  animation: lol 3s infinite ease-in-out;
+}
+
+.cs-loader-inner label:nth-child(5) {
+  -webkit-animation: lol 3s 100ms infinite ease-in-out;
+  animation: lol 3s 100ms infinite ease-in-out;
+}
+
+.cs-loader-inner label:nth-child(4) {
+  -webkit-animation: lol 3s 200ms infinite ease-in-out;
+  animation: lol 3s 200ms infinite ease-in-out;
+}
+
+.cs-loader-inner label:nth-child(3) {
+  -webkit-animation: lol 3s 300ms infinite ease-in-out;
+  animation: lol 3s 300ms infinite ease-in-out;
+}
+
+.cs-loader-inner label:nth-child(2) {
+  -webkit-animation: lol 3s 400ms infinite ease-in-out;
+  animation: lol 3s 400ms infinite ease-in-out;
+}
+
+.cs-loader-inner label:nth-child(1) {
+  -webkit-animation: lol 3s 500ms infinite ease-in-out;
+  animation: lol 3s 500ms infinite ease-in-out;
+}
+
 .toast-title {
   font-weight: bold;
 }

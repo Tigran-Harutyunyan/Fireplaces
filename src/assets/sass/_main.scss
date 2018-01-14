@@ -551,6 +551,7 @@ textarea.ng-dirty.ng-invalid {
 }
 
 .filters-section {
+    position: relative;
     padding-bottom: 40px;
     background-color: #fafafa;
     h2 {
@@ -1095,6 +1096,10 @@ footer {
     display: none
 }
 
+.no-results {
+    text-align: center
+}
+
 h4.product-title.pr-title2 {
     bottom: 27px;
     z-index: 2;
@@ -1112,6 +1117,8 @@ h4.product-title.pr-title2 {
         filter: none
     }
 }
+ 
+
 
 .services-section {
     background-image: url('../images/pattern.jpg');
@@ -1121,7 +1128,7 @@ h4.product-title.pr-title2 {
     width: 100%;
     .section-title {
         margin-bottom: 7px;
-    }
+    } 
 }
 
 .contact-section {
@@ -1177,6 +1184,15 @@ h4.product-title.pr-title2 {
             color: #5c5c5c;
             line-height: 26px
         }
+    }
+    p {
+        font-size: 18px;
+        color: #5c5c5c;
+        max-width: 970px;
+        margin: 0 auto;
+        text-align: center;
+        line-height: 30px;
+        padding: 26px 30px;
     }
 }
 
@@ -1464,6 +1480,7 @@ h4.product-title.pr-title2 {
     display: none;
 }
 
+ 
 .accessories-section .products-dots {
     div {
         display: inline-block;
