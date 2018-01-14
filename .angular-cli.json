@@ -23,7 +23,8 @@
       ],
       "scripts": [
         "./assets/js/vendor/jquery.js",
-        "./assets/js/vendor/owl.carousel.min.js"
+        "./assets/js/vendor/owl.carousel.min.js" ,
+        "./assets/js/vendor/web-animations.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
