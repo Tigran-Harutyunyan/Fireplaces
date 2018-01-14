@@ -19,7 +19,7 @@ export const appRoutes : Routes = [
         component: ProductsComponent 
     },
     {
-        path: 'product-details',
+        path: 'product/:id',
         component: ProductDetailsComponent 
     },
     {
