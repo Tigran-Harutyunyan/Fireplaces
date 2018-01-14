@@ -16,3 +16,10 @@
 .sidebar-nav a {
     font-size: 14px; 
 }
+.inner-container {
+        overflow-x: auto
+} 
+.table-action-btn-place {
+    width: auto;
+    display: flex; 
+}
