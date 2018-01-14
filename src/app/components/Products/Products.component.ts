@@ -1,18 +1,34 @@
-import {Component, OnInit, AfterViewInit} from '@angular/core';
-declare var jquery : any;
-declare var $ : any;
+import {Component, OnInit, AfterViewInit} from '@angular/core'; 
+import {
+  animate, state, transition, trigger, style, query,
+  stagger, AnimationEvent, animateChild, group
+} from "@angular/animations";
 import * as toastr from 'toastr';
 import {customerApiService} from "../../shared/httpRequests.service";
 import {IServerData} from "../../shared/allData.model";
 import {forEach} from '@angular/router/src/utils/collection';
-@Component({templateUrl: './Products.component.html'})
+declare var jquery : any;
+declare var $ : any;
+
+@Component({
+templateUrl: './Products.component.html',
+animations: [
+  trigger('fade', [
+    transition(':enter', [style({opacity: 0}), animate('.6s ease')])
+  ]),
+  trigger('stagger', [
+    transition(':enter', [
+      query(':enter', stagger('.3s', [animateChild()]))
+    ])
+  ])
+]})
 export class ProductsComponent implements AfterViewInit {
   constructor(private customerApi : customerApiService) {}
   public serverData : IServerData;
   public filterResults : any[];
   public noRecords : boolean = false;
   public loading : boolean = false;
-  public filterProducts() {
+  public changeDetector() {
     this.loading = true;
     let filter = {
       fuelTypes: [],
@@ -20,7 +36,6 @@ export class ProductsComponent implements AfterViewInit {
       heatOutputRanges: [],
       priceRanges: []
     }
-    console.log(filter)
     this
       .serverData
       .fuelTypes
@@ -111,6 +126,6 @@ export class ProductsComponent implements AfterViewInit {
     this.serverData = this
       .customerApi
       .getAllInfo();
-    this.filterProducts();
+    this.changeDetector();
   };
 }

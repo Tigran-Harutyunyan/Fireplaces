@@ -24,7 +24,7 @@
             <div class="filter-section">
                 <h3>Fireplace size</h3>
                 <div class="filter-item" *ngFor="let item of serverData.fireplaceSizeRanges; let i = index">
-                    <input type="checkbox" [id]="'size' + i" [checked]="item.isChecked" (change)="item.isChecked=!item.isChecked" />
+                    <input type="checkbox" [id]="'size' + i" [checked]="item.isChecked" (click)="item.isChecked=!item.isChecked;changeDetector()" />
                     <label [for]="'size' + i" class="filter-label">
                         <span></span>{{ item.name}}</label>
                 </div>
@@ -32,7 +32,7 @@
             <div class="filter-section">
                 <h3>Fuel type</h3>
                 <div class="filter-item" *ngFor="let item of serverData.fuelTypes; let i = index">
-                    <input type="checkbox" [id]="'fuel' + i" [checked]="item.isChecked" (change)="item.isChecked=!item.isChecked"/>
+                    <input type="checkbox" [id]="'fuel' + i" [checked]="item.isChecked" (click)="item.isChecked=!item.isChecked;changeDetector()" />
                     <label [for]="'fuel' + i" class="filter-label">
                         <span></span>{{ item.name}}</label>
                 </div>
@@ -40,7 +40,7 @@
             <div class="filter-section">
                 <h3>Heat output</h3>
                 <div class="filter-item" *ngFor="let item of serverData.heatOutputRanges; let i = index">
-                    <input type="checkbox" [id]="'heat' + i" [checked]="item.isChecked" (change)="item.isChecked=!item.isChecked" />
+                    <input type="checkbox" [id]="'heat' + i" [checked]="item.isChecked" (click)="item.isChecked=!item.isChecked;changeDetector()" />
                     <label [for]="'heat' + i" class="filter-label">
                         <span></span>{{ item.name}}</label>
                 </div>
@@ -48,19 +48,20 @@
             <div class="filter-section">
                 <h3>Price</h3>
                 <div class="filter-item" *ngFor="let item of serverData.priceRanges; let i = index">
-                    <input type="checkbox" [id]="'price' + i" [checked]="item.isChecked" (change)="item.isChecked=!item.isChecked"/>
+                    <input type="checkbox" [id]="'price' + i" [checked]="item.isChecked" (click)="item.isChecked=!item.isChecked;changeDetector()" />
                     <label [for]="'price' + i" class="filter-label">
                         <span></span>{{ item.name}}</label>
                 </div>
             </div>
         </div> 
-        <a class="btn fixed-btn" (click)="filterProducts()">Filter</a> 
+        
+        <!-- <a class="btn fixed-btn" (click)="filterProducts()">Filter</a> -->
     </section>
 
     <!-- SERVICES -->
-    <section class="services-section" style="padding-bottom: 0;"> 
-        <ul class="product-item-container filtered-results" *ngIf="filterResults && filterResults.length > 0">
-            <li *ngFor="let item of filterResults">
+    <section class="services-section" style="padding-bottom: 0;">  
+        <ul [@stagger] class="product-item-container filtered-results" *ngIf="filterResults && filterResults.length > 0">
+            <li *ngFor="let item of filterResults" [@fade]>
                 <div class="shirma"></div>
                 <div class="product-hover-section">
                     <h4 class="product-title pr-title1">{{ item.name }}</h4>
@@ -69,7 +70,7 @@
                 <h4 class="product-title pr-title2">{{ item.name }}</h4>
                 <img src="{{ item.imgUrl }}" alt="">
             </li>
-        </ul>
+        </ul> 
         <div class="no-results" *ngIf="noRecords">
             No matching products
         </div>
